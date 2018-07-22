@@ -8,7 +8,6 @@ needed in this implementation.
 """
 from collections.abc import Mapping
 from contextlib import suppress
-from itertools import chain
 
 from pyknow.activation import Activation
 from pyknow.rule import Rule
@@ -190,7 +189,7 @@ class OrdinaryMatchNode(mixins.AnyChild,
             match = self.matcher(left_context, right_context)
 
             if match:
-                MATCH.info("%s (%s | %s) = True",
+                MATCH.debug("%s (%s | %s) = True",
                            self.__class__.__name__,
                            left_context,
                            right_context)

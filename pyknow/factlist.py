@@ -84,7 +84,7 @@ class FactList(OrderedDict):
             self.added.append(fact)
             self.reference_counter[fact_id] += 1
 
-            watchers.FACTS.info(" ==> %s: %r", fact, fact)
+            watchers.FACTS.debug(" ==> %s: %r", fact, fact)
             return fact
         else:
             return None
@@ -118,7 +118,7 @@ class FactList(OrderedDict):
         if self.reference_counter[fact_id] == 0:
             self.reference_counter.pop(fact_id)
 
-        watchers.FACTS.info(" <== %s: %r", fact, fact)
+        watchers.FACTS.debug(" <== %s: %r", fact, fact)
         self.removed.append(fact)
 
         del self[idx]

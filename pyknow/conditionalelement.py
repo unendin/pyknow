@@ -1,3 +1,5 @@
+from itertools import chain
+
 __all__ = ['AND', 'OR', 'NOT', 'TEST', 'EXISTS', 'FORALL']
 
 

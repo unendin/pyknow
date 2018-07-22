@@ -8,6 +8,7 @@ a more pythonic approach.
 .. _paper: http://reports-archive.adm.cs.cmu.edu/anon/scan/CMU-CS-79-forgy.pdf
 
 """
+
 from functools import lru_cache
 from itertools import chain
 from collections import Counter
@@ -16,9 +17,9 @@ from .check import TypeCheck, FactCapture, FeatureCheck
 from .nodes import BusNode, ConflictSetNode, FeatureTesterNode
 from .utils import prepare_rule, extract_facts, generate_checks, wire_rule
 from pyknow import OR
-from pyknow.rule import Rule
-from pyknow.fact import InitialFact
-from pyknow.abstract import Matcher
+from ...rule import Rule
+from ...fact import InitialFact
+from ...abstract import Matcher
 
 
 class ReteMatcher(Matcher):
@@ -117,7 +118,8 @@ class ReteMatcher(Matcher):
             elif isinstance(check, FeatureCheck):
                 return (check_rank[check], hash(check))
             else:
-                raise TypeError("Unknown check type.")  # pragma: no cover
+                pass
+                # raise TypeError("Unknown check type.")  # pragma: no cover
 
         def weighted_rule_sort(rule):
             """Sort rules by the average weight of its checks."""

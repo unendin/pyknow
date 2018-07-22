@@ -12,7 +12,7 @@ import logging
 
 __all__ = ['watch', 'unwatch']
 
-logging.basicConfig()
+# logging.basicConfig()
 
 
 def define_watcher(name):

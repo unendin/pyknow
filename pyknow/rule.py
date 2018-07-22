@@ -3,7 +3,7 @@ from functools import update_wrapper
 import inspect
 
 from pyknow import watchers
-from pyknow.conditionalelement import ConditionalElement
+from .conditionalelement import ConditionalElement
 
 
 class Rule(ConditionalElement):

@@ -5,9 +5,9 @@ from .check import WhereCheck
 from .dnf import dnf
 from .nodes import ConflictSetNode, NotNode, OrdinaryMatchNode
 from .nodes import WhereNode
-from pyknow.conditionalelement import NOT, OR, AND, TEST, EXISTS, FORALL
-from pyknow.fact import InitialFact, Fact
-from pyknow.rule import Rule
+from ...conditionalelement import NOT, OR, AND, TEST, EXISTS, FORALL
+from ...fact import InitialFact, Fact
+from ...rule import Rule
 
 
 @singledispatch

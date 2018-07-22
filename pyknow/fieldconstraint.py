@@ -1,7 +1,8 @@
 from collections.abc import Callable
+from itertools import chain
 
-from pyknow.conditionalelement import ConditionalElement
-from pyknow.pattern import Bindable
+from .conditionalelement import ConditionalElement
+from .pattern import Bindable
 
 __all__ = ['L', 'W', 'P']
 

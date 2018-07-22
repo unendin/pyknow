@@ -36,14 +36,14 @@ class Strategy(metaclass=abc.ABCMeta):
     def update_agenda(self, agenda, added, removed):
         if watchers.worth('ACTIVATIONS', 'INFO'):  # pragma: no cover
             for act in removed:
-                watchers.ACTIVATIONS.info(
+                watchers.ACTIVATIONS.debug(
                     " <== %r: %s %s",
                     getattr(act.rule, '__name__', None),
                     ", ".join(str(f) for f in act.facts),
                     "[EXECUTED]" if act not in agenda.activations else "")
 
             for act in added:
-                watchers.ACTIVATIONS.info(
+                watchers.ACTIVATIONS.debug(
                     " ==> %r: %s",
                     getattr(act.rule, '__name__', None),
                     ", ".join(str(f) for f in act.facts))

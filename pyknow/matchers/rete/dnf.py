@@ -5,10 +5,10 @@ from collections import OrderedDict
 from functools import singledispatch
 from itertools import chain, product
 
-from pyknow.conditionalelement import AND, OR, NOT
-from pyknow.fieldconstraint import ORFC, NOTFC, ANDFC
-from pyknow.rule import Rule
-from pyknow.fact import Fact
+from ...conditionalelement import AND, OR, NOT
+from ...fieldconstraint import ORFC, NOTFC, ANDFC
+from ...rule import Rule
+from ...fact import Fact
 
 
 def unpack_exp(exp, op):

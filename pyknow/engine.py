@@ -16,7 +16,7 @@ from pyknow.rule import Rule
 from pyknow.deffacts import DefFacts
 from pyknow import watchers
 
-logging.basicConfig()
+# logging.basicConfig()
 
 
 class KnowledgeEngine:
@@ -156,7 +156,7 @@ class KnowledgeEngine:
                 steps -= 1
                 execution += 1
 
-                watchers.RULES.info(
+                watchers.RULES.debug(
                     "FIRE %s %s: %s",
                     execution,
                     activation.rule.__name__,

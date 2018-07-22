@@ -1,14 +1,13 @@
 from collections import namedtuple
 from collections.abc import Mapping
 from functools import singledispatch
-import dis
 import inspect
 
-from pyknow.fieldconstraint import FieldConstraint
-from pyknow.fieldconstraint import L, P, W
-from pyknow.fieldconstraint import ANDFC, ORFC, NOTFC
+from ...fieldconstraint import FieldConstraint
+from ...fieldconstraint import L, P, W
+from ...fieldconstraint import ANDFC, ORFC, NOTFC
 from .abstract import Check
-from pyknow.watchers import MATCH
+from ...watchers import MATCH
 
 
 CheckFunction = namedtuple('CheckFunction',
@@ -27,7 +26,7 @@ class TypeCheck(Check, namedtuple('_TypeCheck', ['fact_type'])):
     def __call__(self, fact):
         res = type(fact) == self.fact_type
 
-        log = MATCH.info if res else MATCH.debug
+        log = MATCH.debug if res else MATCH.debug
         log("type(%s) == %s = %r",
             fact, self.fact_type.__name__, res)
 
@@ -51,7 +50,7 @@ class FactCapture(Check, namedtuple('_FactCapture', ['bind'])):
         return self.bind
 
     def __call__(self, fact):
-        MATCH.info("%r <= %s", self.__bind__, fact)
+        MATCH.debug("%r <= %s", self.__bind__, fact)
         return {self.__bind__: fact}
 
     def __str__(self):  # pragma: no cover
@@ -105,7 +104,7 @@ class FeatureCheck(Check,
 
         res = self.check(record, self.expected)
 
-        log = MATCH.info if res else MATCH.debug
+        log = MATCH.debug if res else MATCH.debug
         log("what=%r, how=%r, fact=%s = %r", self.what, self.how, data, res)
 
         return res
@@ -262,7 +261,7 @@ class WhereCheck(Check, namedtuple('_WhereCheck', ['test'])):
         parameters = {k: context.get(k) for k in self.parameters}
         res = self.test(**parameters)
 
-        log = MATCH.info if res else MATCH.debug
+        log = MATCH.debug if res else MATCH.debug
         log("TEST %r(%r) == %r", self.test, parameters, res)
 
         return res
