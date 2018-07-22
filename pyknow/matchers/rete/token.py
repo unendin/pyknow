@@ -1,7 +1,6 @@
 """Token object and related objects needed by the RETE algorithm."""
 
 from collections import namedtuple
-from collections.abc import Mapping
 from enum import Enum
 
 from pyknow.fact import Fact
@@ -54,7 +53,7 @@ class Token(namedtuple('_Token', ['tag', 'data', 'context'])):
             assert (isinstance(data, Fact) or
                     all(isinstance(f, Fact) for f in data)), \
                 "data must be either Fact or iterable of Facts"
-            assert isinstance(context, Mapping)
+            assert isinstance(context, dict)
         except AssertionError as exc:
             raise TypeError(exc) from exc
 

@@ -1,5 +1,4 @@
 from collections import namedtuple
-from collections.abc import Mapping
 from functools import singledispatch
 import inspect
 
@@ -170,7 +169,7 @@ class FeatureCheck(Check,
     def _(pce, what=None):
         def not_equal(actual, expected):
             subresult = expected(actual, is_fact=False)
-            if isinstance(subresult, Mapping):
+            if isinstance(subresult, dict):
                 newresult = {(False, k): v
                              for k, v in subresult.items()}
                 return newresult
@@ -194,7 +193,7 @@ class FeatureCheck(Check,
                     break
                 elif subres is True:
                     pass
-                elif isinstance(subres, Mapping):
+                elif isinstance(subres, dict):
                     value.update(subres)
                 else:
                     raise TypeError('Bad check value.')

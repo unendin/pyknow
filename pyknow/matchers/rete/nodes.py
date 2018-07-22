@@ -6,7 +6,6 @@ types (like `The One-input Node for Testing Variable Bindings) are not
 needed in this implementation.
 
 """
-from collections.abc import Mapping
 from contextlib import suppress
 
 from pyknow.activation import Activation
@@ -115,7 +114,7 @@ class FeatureTesterNode(mixins.AnyChild,
         match = self.matcher(fact)
 
         if match:
-            if isinstance(match, Mapping):
+            if isinstance(match, dict):
                 for key, value in match.items():
                     if isinstance(key, tuple):  # Negated condition
                         if key[1] in token.context \
